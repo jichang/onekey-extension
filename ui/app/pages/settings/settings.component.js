@@ -69,8 +69,15 @@ class SettingsPage extends PureComponent {
           )}
           {this.renderTitle()}
           <div
+            role="button"
+            tabindex="0"
             className="settings-page__close-button"
             onClick={() => history.push(mostRecentOverviewPage)}
+            onKeyPress={(evt) => {
+              if (evt.key === 'Enter') {
+                history.push(mostRecentOverviewPage);
+              }
+            }}
           />
         </div>
         <div className="settings-page__content">

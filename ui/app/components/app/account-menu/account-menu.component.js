@@ -28,11 +28,31 @@ export function AccountMenuItem(props) {
     'account-menu__item--clickable': Boolean(onClick),
   });
   return children ? (
-    <div className={itemClassName} onClick={onClick}>
+    <div
+      role="button"
+      tabindex="0"
+      className={itemClassName}
+      onClick={onClick}
+      onKeyPress={(evt) => {
+        if (evt.key === 'Enter') {
+          onClick();
+        }
+      }}
+    >
       {children}
     </div>
   ) : (
-    <div className={itemClassName} onClick={onClick}>
+    <div
+      role="button"
+      tabindex="0"
+      className={itemClassName}
+      onClick={onClick}
+      onKeyPress={(evt) => {
+        if (evt.key === 'Enter') {
+          onClick();
+        }
+      }}
+    >
       {icon ? <div className="account-menu__item__icon">{icon}</div> : null}
       {text ? <div className="account-menu__item__text">{text}</div> : null}
       {subText ? (

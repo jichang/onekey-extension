@@ -161,7 +161,8 @@ export default class NewAccount extends PureComponent {
             }}
             href="#"
           >
-            <span>&lt; </span><span>{t('back')}</span>
+            <span>&lt; </span>
+            <span>{t('back')}</span>
           </a>
         </div>
         <div className="first-time-flow__header">{t('createPassword')}</div>
@@ -195,9 +196,7 @@ export default class NewAccount extends PureComponent {
             fullWidth
             largeLabel
           />
-          <div
-            className="first-time-flow__checkbox-container"
-          >
+          <div className="first-time-flow__checkbox-container">
             <div
               className="first-time-flow__checkbox"
               tabIndex="0"
@@ -205,6 +204,7 @@ export default class NewAccount extends PureComponent {
               aria-checked={termsChecked}
               aria-labelledby="ftf-chk1-label"
               onClick={this.toggleTermsCheck}
+              onKeyPress={this.onTermsKeyPress}
             >
               {termsChecked ? <i className="fa fa-check fa-2x" /> : null}
             </div>

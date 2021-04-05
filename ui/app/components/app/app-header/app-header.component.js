@@ -69,9 +69,24 @@ export default class AppHeader extends PureComponent {
     return (
       isUnlocked && (
         <div
+          role="button"
+          tabIndex="0"
           className={classnames('account-menu__icon', {
             'account-menu__icon--disabled': disabled,
           })}
+          onKeyPress={(evt) => {
+            if (!disabled && evt.key === 'Enter') {
+              !isAccountMenuOpen &&
+                this.context.metricsEvent({
+                  eventOpts: {
+                    category: 'Navigation',
+                    action: 'Home',
+                    name: 'Opened Main Menu',
+                  },
+                });
+              toggleAccountMenu();
+            }
+          }}
           onClick={() => {
             if (!disabled) {
               !isAccountMenuOpen &&
